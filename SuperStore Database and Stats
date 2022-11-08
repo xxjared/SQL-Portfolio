@@ -1,0 +1,20 @@
+CREATE TABLE superstore (id INTEGER PRIMARY KEY, item TEXT, price INTEGER, stock INTEGER, sold INTEGER);
+
+INSERT INTO superstore VALUES(222, "tshirt", 45, 20, 10);
+INSERT INTO superstore VALUES(333, "pants", 60, 15, 6);
+INSERT INTO superstore VALUES(444, "socks", 15, 30, 12);
+INSERT INTO superstore VALUES(555, "boxers", 18, 35, 7);
+INSERT INTO superstore VALUES(777, "jacket", 55, 15, 9);
+INSERT INTO superstore VALUES(888, "beanie", 13, 35, 17);
+INSERT INTO superstore VALUES(999, "hat", 25, 40, 28);
+INSERT INTO superstore VALUES(100, "candy", 5, 50, 30);
+INSERT INTO superstore VALUES(200, "chains", 150, 10, 3);
+INSERT INTO superstore VALUES(300, "shoes", 180, 18, 9);
+INSERT INTO superstore VALUES(400, "hoodie", 60, 20, 8);
+INSERT INTO superstore VALUES(500, "shorts", 30, 25, 13);
+INSERT INTO superstore VALUES(600, "phone case", 40, 23, 8);
+INSERT INTO superstore VALUES(700, "earings", 80, 27, 13);
+INSERT INTO superstore VALUES(800, "dog shirts", 15, 25, 8);
+INSERT INTO superstore VALUES(900, "posters", 15, 30, 17);
+
+SELECT * FROM superstore;
