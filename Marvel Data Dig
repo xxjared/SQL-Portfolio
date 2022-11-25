@@ -1,0 +1,81 @@
+
+CREATE TABLE marvel_characters (id INTEGER PRIMARY KEY AUTOINCREMENT,
+name TEXT,
+total_enemies INTEGER,
+special_powers REAL,
+popularity INTEGER);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Spider-Man", 259, 15, 1);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Captain America", 70, 1, 4);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Hulk", 62, 4, 7);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Black Widow", 226, 0, 11);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Iron Man", 49, 9, 6);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Hawkeye", 625, 0, 10);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Starlord", 53, 6, 9);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Thor", 68, 5, 3);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Dr.Strange", 323, 15, 8);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Black Panther", 222, 12, 5);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Wolverine", 1237, 20, 2);
+
+INSERT INTO marvel_characters (name, total_enemies, special_powers, popularity) VALUES ("Captain Marvel", 69, 15, 12);
+
+SELECT * FROM marvel_characters;
+
+SELECT * FROM marvel_characters WHERE total_enemies ORDER BY total_enemies DESC;
+
+SELECT * FROM marvel_characters WHERE special_powers ORDER BY special_powers DESC;
+
+SELECT * FROM marvel_characters WHERE popularity ORDER BY popularity ASC;
+
+SELECT AVG(total_enemies)
+FROM marvel_characters;
+
+SELECT AVG(special_powers)
+FROM marvel_characters;
+
+SELECT MAX(special_powers)
+FROM marvel_characters;
+
+SELECT MIN(special_powers)
+FROM marvel_characters;
+
+SELECT MAX(total_enemies)
+FROM marvel_characters;
+
+SELECT MIN(total_enemies)
+FROM marvel_characters;
+
+SELECT AVG(popularity)
+FROM marvel_characters;
+
+SELECT COUNT(*)
+FROM marvel_characters;
+
+SELECT SUM(total_enemies)
+FROM marvel_characters;
+
+SELECT SUM(special_powers)
+FROM marvel_characters;
+
+SELECT name, SUM(special_powers), CASE
+    WHEN SUM(special_powers) >= 10 THEN 'overpowered'
+    WHEN SUM(special_powers) >= 6 THEN 'strong'
+    WHEN SUM(special_powers) <= 4 THEN 'weak'
+    ELSE 'human strength'
+    END AS how_powerful
+FROM marvel_characters
+GROUP BY 1;
+
+SELECT *
+FROM marvel_characters
+WHERE total_enemies > 150 OR special_powers < 8;
