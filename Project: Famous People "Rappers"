@@ -1,0 +1,76 @@
+CREATE TABLE rappers 
+    (id INTEGER PRIMARY KEY, 
+    fullname TEXT,
+    age INTEGER,
+    billboard_hits INTEGER,
+    birth_state TEXT);
+
+INSERT INTO rappers (fullname, age, billboard_hits, birth_state) 
+    VALUES("Travis Scott", 31, 15, "Texas");
+ 
+ INSERT INTO rappers (fullname, age, billboard_hits, birth_state) 
+    VALUES("Lil Wayne", 40, 28, "Louisiana");
+    
+INSERT INTO rappers (fullname, age, billboard_hits, birth_state) 
+    VALUES("J.Cole", 37, 10, "North Carolina");
+    
+INSERT INTO rappers (fullname, age, billboard_hits, birth_state) 
+    VALUES("Lil Baby", 28, 10, "Georgia");
+    
+INSERT INTO rappers (fullname, age, billboard_hits, birth_state) 
+    VALUES("Future", 39, 9, "Georgia");
+    
+INSERT INTO rappers (fullname, age, billboard_hits, birth_state) 
+    VALUES("Post Malone", 27, 11, "New York");
+    
+INSERT INTO rappers (fullname, age, billboard_hits, birth_state) 
+    VALUES("Lil Durk", 30, 2, "Illinois");
+    
+INSERT INTO rappers (fullname, age, billboard_hits, birth_state) 
+    VALUES("Kendrick Lamar", 35, 12, "California");
+    
+CREATE TABLE billboard100 
+(id INTEGER PRIMARY KEY,
+artist_id TEXT,
+billboard100_songs INTEGER,
+Billboard_Num1 INTEGER,
+record_label TEXT);
+
+INSERT INTO billboard100 (artist_id, billboard100_songs, Billboard_Num1, record_label) 
+    VALUES("1", 83, 4, "Cactus Jack Records");
+    
+INSERT INTO billboard100 (artist_id, billboard100_songs, Billboard_Num1, record_label) 
+    VALUES("2", 183, 3, "Young Money Entertainment");
+    
+INSERT INTO billboard100 (artist_id, billboard100_songs, Billboard_Num1, record_label) 
+    VALUES("3", 66, 0, "Dreamville Records");
+
+INSERT INTO billboard100 (artist_id, billboard100_songs, Billboard_Num1, record_label) 
+    VALUES("4", 132, 0, "4PF");
+
+INSERT INTO billboard100 (artist_id, billboard100_songs, Billboard_Num1, record_label) 
+    VALUES("5", 153, 2, "Freebandz");
+
+INSERT INTO billboard100 (artist_id, billboard100_songs, Billboard_Num1, record_label) 
+    VALUES("6", 66, 4, "Republic Records");
+
+INSERT INTO billboard100 (artist_id, billboard100_songs, Billboard_Num1, record_label) 
+    VALUES("7", 72, 0, "OTF Records");
+
+INSERT INTO billboard100 (artist_id, billboard100_songs, Billboard_Num1, record_label) 
+    VALUES("8", 69, 2, "Top Dawg Entertainment");
+
+SELECT rappers.fullname, billboard100.record_label
+FROM rappers
+JOIN billboard100
+ON rappers.id = billboard100.artist_id;
+
+SELECT rappers.fullname, billboard100.record_label, billboard100.billboard100_songs
+FROM rappers
+JOIN billboard100
+ON rappers.id = billboard100.artist_id;
+
+SELECT rappers.fullname, rappers.birth_state, billboard100.record_label, billboard100.billboard100_songs, billboard100.billboard_Num1
+FROM rappers
+JOIN billboard100
+ON rappers.id = billboard100.artist_id;
