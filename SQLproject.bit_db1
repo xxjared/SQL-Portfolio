@@ -1,0 +1,29 @@
+--Question at the bottom--
+--#1. 
+SELECT orderdate
+FROM BIT_DB.FebSales
+WHERE orderdate between '02/13/19 00:00' AND '02/18/19 00:00';
+--#2.
+SELECT location
+FROM BIT_DB.FebSales
+WHERE orderdate = '02/18/19 01:35';
+--#3.
+SELECT sum(quantity)
+FROM BIT_DB.FebSales
+WHERE orderdate like '02/18/19%';
+--#4.
+SELECT distinct product
+FROM BIT_DB.FebSales
+WHERE product like '%batteries%';
+--#5.
+SELECT distinct Product,Price
+FROM BIT_DB.FebSales
+WHERE price like '%.99';
+
+--QUESTION - List all the products sold in Los Angeles in February, and include how many of each were sold.
+SELECT product, SUM(quantity)
+FROM BIT_DB.FebSales
+WHERE location like '%Los Angeles%'
+GROUP BY product;
+
+
