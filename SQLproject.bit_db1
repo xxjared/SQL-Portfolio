@@ -1,0 +1,66 @@
+--1. Who are the top 10 artists based on popularity?
+ 
+SELECT artist_name, track_name, popularity
+FROM BIT_DB.Spotifydata
+ORDER BY popularity desc
+LIMIT 10;
+
+--2. Who are the top 10 artist with the most energy?
+
+SELECT artist_name, SUM(energy)
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY SUM(energy) DESC
+LIMIT 10;
+
+--3. Which artist released the longest song?
+
+SELECT artist_name, track_name, duration_ms
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+ORDER BY duration_ms DESC
+LIMIT 1;
+
+--4. What is the average loudness, danceability, and energy by artist and track?
+
+SELECT artist_name,track_name
+,avg(loudness)
+,avg(danceability)
+,avg(energy)
+FROM BIT_DB.spotifydata
+GROUP BY artist_name, track_name;
+
+--5. WHat is the average popularity of Bad Bunny?
+
+SELECT artist_name
+,avg(popularity) AS average_popularity
+FROM BIT_DB.spotifydata
+WHERE artist_name = 'Bad Bunny';
+
+--6. What are the top 10 loudest songs ?
+
+SELECT artist_name, track_name, loudness
+FROM BIT_DB.Spotifydata
+ORDER BY loudness DESC
+LIMIT 10;
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
