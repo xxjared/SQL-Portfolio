@@ -43,24 +43,3 @@ SELECT artist_name, track_name, loudness
 FROM BIT_DB.Spotifydata
 ORDER BY loudness DESC
 LIMIT 10;
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
