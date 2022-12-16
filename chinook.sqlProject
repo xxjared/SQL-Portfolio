@@ -1,0 +1,105 @@
+--1. Who are all the customers from Brazil?
+
+SELECT FirstName, LastName, Country
+FROM chinook.customers
+WHERE country = 'Brazil';
+
+--2. How many orders came from Brazil and what date were they ordered on?
+
+SELECT cust.FirstName, cust.LastName, inv.InvoiceId, inv.BillingCountry, inv.InvoiceDate
+FROM chinook.invoices as inv 
+LEFT JOIN chinook.customers as cust 
+on inv.CustomerId = cust.CustomerId 
+WHERE inv.BillingCountry = 'Brazil';
+
+--3. Which employees are sales agents?
+
+SELECT * FROM chinook.employees
+WHERE Title = 'Sales Support Agent';
+
+--4. How many invoices were there in 2009?
+
+SELECT COUNT (*) AS '2009invoices'
+FROM chinook.invoices
+WHERE InvoiceDate BETWEEN '2009-01-01' and '2009-12-31';
+
+--5. What countries have an invoice?
+
+SELECT DISTINCT BillingCountry FROM chinook.invoices;
+
+--6. List of customers, employees, and total invoices with details to each respective category.
+
+SELECT emp.FirstName as 'employeeF', emp.LastName as 'employeeL', cust.FirstName as 'customerF', cust.LastName as 'customerL', cust.Country as 'cust_country', inv.total
+FROM chinook.employees emp
+JOIN chinook.customers cust ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.invoices Inv ON Inv.CustomerId = cust.CustomerId;
+
+--7. Which sales agent made the most revenue in sales in 2009?
+
+SELECT emp.FirstName, emp.LastName,
+ROUND(SUM(Inv.Total), 2) AS 'Total Sales'
+FROM chinook.employees emp
+
+JOIN chinook.customers cust
+ON cust.SupportRepId = emp.EmployeeId
+
+JOIN chinook.invoices Inv
+ON Inv.CustomerId = cust.CustomerId
+
+WHERE emp.Title = 'Sales Support Agent'
+AND Inv.InvoiceDate LIKE '2009%'
+GROUP BY emp.FirstName
+ORDER BY (round(sum(Inv.Total), 2)) DESC LIMIT 1;
+
+--7. Who are the top 3 agents with most revenue made in sales in 2009?
+
+SELECT emp.FirstName, emp.LastName,
+ROUND(SUM(Inv.Total), 2) AS 'Total Sales'
+FROM chinook.employees emp
+
+JOIN chinook.customers cust
+ON cust.SupportRepId = emp.EmployeeId
+
+JOIN chinook.invoices Inv
+ON Inv.CustomerId = cust.CustomerId
+
+WHERE emp.Title = 'Sales Support Agent'
+AND Inv.InvoiceDate LIKE '2009%'
+GROUP BY emp.FirstName
+ORDER BY (round(sum(Inv.Total), 2)) DESC LIMIT 3;
+
+--8. What are all of Billy Cobham's Jazz songs?
+
+SELECT chinook.tracks.GenreId, chinook.tracks.Name, chinook.tracks.Composer, chinook.genres.GenreId, chinook.genres.Name
+FROM chinook.tracks
+INNER JOIN chinook.genres ON chinook.tracks.GenreId = chinook.genres.GenreId
+WHERE chinook.tracks.Composer = 'Billy Cobham';
+
+--9. What are all songs made by AC/DC?
+
+SELECT chinook.tracks.GenreId, chinook.tracks.Name, chinook.tracks.Composer, chinook.genres.GenreId, chinook.genres.Name
+FROM chinook.tracks
+INNER JOIN chinook.genres ON chinook.tracks.GenreId = chinook.genres.GenreId
+WHERE chinook.tracks.Composer = 'AC/DC';
+
+--10. What are all the Pop songs by name, composer, and genreID?
+
+SELECT chinook.tracks.GenreId, chinook.tracks.Name, chinook.tracks.Composer, chinook.genres.GenreId, chinook.genres.Name
+FROM chinook.tracks
+INNER JOIN chinook.genres ON chinook.tracks.GenreId = chinook.genres.GenreId
+WHERE chinook.genres.Name = 'Pop';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
